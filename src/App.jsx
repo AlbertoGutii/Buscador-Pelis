@@ -4,6 +4,7 @@ import  TarjetaPeli  from './components/TarjetaPeli'
 
 export function App() {
   const [pelicula, setPelicula] = useState()
+  const [busqueda, setBusqueda] = useState()
   
   useEffect(() => {
     recuperarPeliculas("cars")
@@ -28,24 +29,31 @@ export function App() {
           console.log("no hay peli")
         }
         else {
-          console.log("si hay peli")
+          // console.log("si hay peli")
+          // console.log(pelicula)
           setPelicula(data)
-          console.log(pelicula)
         }
       })
   }
 
   const handleOnChange = (event) => {
     event.preventDefault()
-    console.log(event.target.value)
-    recuperarPeliculas(event.target.value)
+    // console.log(event.target.value)
+    // recuperarPeliculas(event.target.value)
+    setBusqueda(event.target.value)
+  }
+
+  const handleOnSubmit = (event) => {
+    event.preventDefault()
+    // console.log(event.target.value)
+    recuperarPeliculas(busqueda)
   }
 
   return (
     <>
       {pelicula &&<div>
         <h1>Buscador de pelis</h1>
-        <form>
+        <form onSubmit={handleOnSubmit}>
           <input onChange={handleOnChange} type="text" />
           <button type='submit'>
             buscar
