@@ -51,21 +51,22 @@ export function App() {
 
   return (
     <>
-      {pelicula &&<div>
-        <h1>Buscador de pelis</h1>
-        <form onSubmit={handleOnSubmit}>
-          <input onChange={handleOnChange} type="text" />
-          <button type='submit'>
+      {pelicula &&<div className='flex items-center justify-center flex-col'>
+        <h1 className='text-4xl font-semibold m-5'>Buscador de películas</h1>
+        <form onSubmit={handleOnSubmit} className='flex flex-row items-center gap-5 mt-4'>
+          <input onChange={handleOnChange} type="text" className='w-64 h-11 text-lg' placeholder='Introduce una pelicula' />
+          <button type='submit' className="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded w-32">
             buscar
           </button>
         </form>
-
-        <div>
+      </div>}    
+      {pelicula &&<div >
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 mt-3 mb-5">
           {
             ListarPeliculas(pelicula)
           }
-        </div>
-      </div>}    
+        </ul>
+      </div>}
     </>
   )
 }
