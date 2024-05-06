@@ -74,7 +74,7 @@ export function App() {
       </div>}    
       {pelicula &&<div >
         {errorMessage && <div>{errorMessage}</div>}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 mt-3 mb-5">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 mt-3 mb-5 justify-items-center items-center">
           {
             ListarPeliculas(pelicula)
           }
