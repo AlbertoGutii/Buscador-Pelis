@@ -6,7 +6,8 @@ export function App() {
   const [pelicula, setPelicula] = useState()
   const [busqueda, setBusqueda] = useState()
   const [errorMessage, setErrorMessage] = useState()
-  
+
+  //? sirve para cargar peliculas por defecto
   useEffect(() => {
     recuperarPeliculas()
   }, [])
@@ -63,7 +64,7 @@ export function App() {
 
   return (
     <>
-      {pelicula &&<div className='flex items-center justify-center flex-col'>
+      <div className='flex items-center justify-center flex-col'>
         <h1 className='text-4xl font-semibold m-5'>Buscador de películas</h1>
         <form onSubmit={handleOnSubmit} className='flex flex-row items-center gap-5 mt-4'>
           <input onChange={handleOnChange} type="text" className='w-64 h-11 text-lg p-2' placeholder='Introduce una pelicula' />
@@ -71,14 +72,14 @@ export function App() {
             buscar
           </button>
         </form>
-      </div>}    
+      </div>  
       {pelicula &&<div >
-        {errorMessage && <div>{errorMessage}</div>}
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 mt-3 mb-5 justify-items-center items-center">
+        {errorMessage && <p className='bg-red-500 text-white px-4 py-2 rounded text-lg mt-4 text-center'>{errorMessage}</p>}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 p-4 mt-3 mb-5 justify-items-center items-center">
           {
             ListarPeliculas(pelicula)
           }
-        </ul>
+        </div>
       </div>}
     </>
   )
